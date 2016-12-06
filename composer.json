@@ -1,7 +1,7 @@
 {
-  "name": "xfususionsolution/controledeacesso",
+  "name": "xfusionsolution/controledeacesso",
   "description": "Controle de Acesso",
-  "keywords": ["controle", "acesso", "usuario", "permissoes", "perfil", "auth", "acl"],
+  "keywords": ["controle", "acesso", "usuario", "permissoes", "perfil", "auth"],
   "license": "BSD-3-Clause",
   "authors": [
     {
@@ -28,7 +28,6 @@
       "XfusionSolution\\ControleDeAcesso\\": "src/"
     }
   },
-
   "extra": {
     "component": "package",
     "branch-alias": {
