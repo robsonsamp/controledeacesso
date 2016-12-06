@@ -31,10 +31,6 @@
 
   "extra": {
     "component": "package",
-    "frameworks": ["Laravel 5.*"],
-    "versions": {
-      "0.0.1": "master"
-    },
     "branch-alias": {
       "dev-master": "0.0.1-dev"
     }
