@@ -6,7 +6,7 @@
   "keywords": ["Controle", "Acesso", "Usuario", "Permissoes", "Perfil"],
 
   "require": {
-    "php": ">=5.3.7",
+    "php": ">=5.3.7"
   },
 
   "autoload": {
