@@ -1,0 +1,30 @@
+{
+  "name": "xfususionsolution/controledeacesso",
+
+  "description": "Controle de Acesso",
+
+  "keywords": ["Controle", "Acesso", "Usuario", "Permissoes", "Perfil"],
+
+  "require": {
+    "php": ">=5.3.7",
+  },
+
+  "autoload": {
+    "psr-4": {
+      "XfusionSolution\\ControleDeAcesso\\": "src/"
+    }
+  },
+
+  "extra": {
+    "component": "package",
+    "frameworks": ["Laravel 5.*"],
+    "versions": {
+      "0.0.1": "master"
+    },
+    "branch-alias": {
+      "dev-master": "0.0.1-dev"
+    }
+  },
+
+  "minimum-stability": "dev"
+}
