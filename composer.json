@@ -1,7 +1,7 @@
 {
   "name": "xfususionsolution/controledeacesso",
   "description": "Controle de Acesso",
-  "keywords": ["controle", "acesso", "usuario", "permissoes", "perfil", "auth"],
+  "keywords": ["controle", "acesso", "usuario", "permissoes", "perfil", "auth", "acl"],
   "license": "BSD-3-Clause",
   "authors": [
     {
