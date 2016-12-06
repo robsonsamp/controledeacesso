@@ -4,7 +4,7 @@ namespace Controledeacesso\Funcionalidades;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Funcionalidade extends Model  {
+class ModelFuncionalidade extends Model  {
 
     /**
      * The database table used by the model.
