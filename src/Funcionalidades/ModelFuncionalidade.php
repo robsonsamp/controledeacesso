@@ -18,7 +18,7 @@
  * @link       http://xfusionsolution.com.br
  */
 
-namespace Xfusionsolution\Contfuncionalidadedeacesso\Permissoes\Perfis;
+namespace Xfusionsolution\Contfuncionalidadedeacesso\Funcionalidades;
 
 use Xfusionsolution\Contfuncionalidadedeacesso\Permissoes\PermissaoInterface;
 use Xfusionsolution\Contfuncionalidadedeacesso\Permissoes\PermitidoTrait;
