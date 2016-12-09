@@ -10,7 +10,7 @@
  * This source file is subject to the 3-clause BSD License that is
  * bundled with this package in the LICENSE file.
  *
- * @package    Contfuncionalidade de Acesso
+ * @package    Contperfil de Acesso
  * @version    0.0.1
  * @author     Robson Sampaio
  * @license    BSD License (3-clause)
@@ -18,46 +18,30 @@
  * @link       http://xfusionsolution.com.br
  */
 
-namespace Xfusionsolution\Contfuncionalidadedeacesso\Permissoes\Perfis;
+namespace Xfusionsolution\Contperfildeacesso\Permissoes\Perfis;
 
-use Xfusionsolution\Contfuncionalidadedeacesso\Permissoes\PermissaoInterface;
-use Xfusionsolution\Contfuncionalidadedeacesso\Permissoes\PermitidoTrait;
-use Xfusionsolution\Contfuncionalidadedeacesso\Permissoes\Perfis\PerfisInterface;
+use Xfusionsolution\Contperfildeacesso\Permissoes\PermissaoInterface;
+use Xfusionsolution\Contperfildeacesso\Permissoes\PermitidoTrait;
+use Xfusionsolution\Contperfildeacesso\Permissoes\Perfis\PerfisInterface;
 use Illuminate\Database\Eloquent\Model;
 
-class ModelFuncionalidade extends Model implements FuncionalidadesInterface, PermissaoInterface
+class ModelPerfil extends Model implements PerfisInterface, PermissaoInterface
 {
     use PermitidoTrait;
 
     /**
      * {@inheritDoc}
      */
+    protected $table = 'seg_perfis';
+
+    /**
+     * {@inheritDoc}
+     */
     protected $fillable = [
         'name',
-        'descricao',
+        'slug',
         'permissoes',
     ];
-
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'seg_funcionalidades';
-
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $guarded = ['MNU_INT_ID_MENUITEM'];
-
-    /**
-     * The primary key for the model.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'MNU_INT_ID_MENUITEM';
 
     /**
      * The connection name for the model.
@@ -67,40 +51,12 @@ class ModelFuncionalidade extends Model implements FuncionalidadesInterface, Per
     protected $connection = 'seguranca';
 
     /**
-     * Array de parents
-     * @var string
-     */
-    protected $parents = array();
-
-    /**
-     * @return string
-     */
-    public function getParents()
-    {
-        return $this->parents;
-    }
-
-    /**
-     * @param string $parents
-     */
-    public function setParents($parents)
-    {
-        $this->parents = $parents;
-    }
-
-    /**
      * The Eloquent usuarios model name.
      *
      * @var string
      */
-    protected static $usuariosModel = 'Xfusionsolution\Contfuncionalidadedeacesso\Usuarios\ModelUsuario';
+    protected static $usuariosModel = 'Xfusionsolution\Contperfildeacesso\Usuarios\ModelUsuario';
 
-    /**
-     * The Eloquent funcionalidade model name.
-     *
-     * @var string
-     */
-    protected static $funcionalidadesModel = 'Xfusionsolution\Contfuncionalidadedeacesso\Funcionalidades\ModelFuncionalidade';
     /**
      * {@inheritDoc}
      */
@@ -122,7 +78,7 @@ class ModelFuncionalidade extends Model implements FuncionalidadesInterface, Per
      */
     public function usuarios()
     {
-        return $this->belongsToMany(static::$usuariosModel, 'funcionalidade_usuarios', 'funcionalidade_id', 'usuario_id')->withTimestamps();
+        return $this->belongsToMany(static::$usuariosModel, 'perfil_usuarios', 'perfil_id', 'usuario_id')->withTimestamps();
     }
 
     /**
@@ -150,7 +106,7 @@ class ModelFuncionalidade extends Model implements FuncionalidadesInterface, Per
     /**
      * {@inheritDoc}
      */
-    public function getFuncionalidadeId()
+    public function getPerfilId()
     {
         return $this->getKey();
     }
@@ -158,9 +114,9 @@ class ModelFuncionalidade extends Model implements FuncionalidadesInterface, Per
     /**
      * {@inheritDoc}
      */
-    public function getDescricao()
+    public function getPerfislug()
     {
-        return $this->descricao;
+        return $this->slug;
     }
 
     /**
