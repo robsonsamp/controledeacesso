@@ -18,7 +18,7 @@
  * @link       http://xfusionsolution.com.br
  */
 
-namespace Xfusionsolution\Controledeacesso\Permissoes\Funcionalidades;
+namespace Xfusionsolution\Controledeacesso\Funcionalidades;
 
 use Xfusionsolution\Suporte\Traits\RepositoryTrait;
 
