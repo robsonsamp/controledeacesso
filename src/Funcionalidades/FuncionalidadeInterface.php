@@ -18,7 +18,7 @@
  * @link       http://xfusionsolution.com.br
  */
 
-namespace Xfusionsolution\Controledeacesso\Funcionalidade;
+namespace Xfusionsolution\Controledeacesso\Funcionalidades;
 
 interface FuncionalidadeInterface
 {
