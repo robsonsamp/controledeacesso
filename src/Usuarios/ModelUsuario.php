@@ -20,13 +20,15 @@
 
 namespace Xfusionsolution\Controledeacesso\Usuarios;
 
+use Xfusionsolution\Controledeacesso\Permissoes\PermitidoInterface;
 use Xfusionsolution\Controledeacesso\Persistencias\PersistenciasInterface;
-use Xfusionsolution\Controledeacesso\Permissoes\PermissaoInterface;
+use Xfusionsolution\Controledeacesso\Permissoes\PermissoesInterface;
 use Xfusionsolution\Controledeacesso\Permissoes\Perfis\PerfisInterface;
 use Xfusionsolution\Controledeacesso\Permissoes\Perfis\PerfilInterface;
+use Xfusionsolution\Controledeacesso\Permissoes\PermitidoTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class ModelUsuario extends Model implements PerfisInterface, PermissaoInterface, PersistenciasInterface, UsuarioInterface
+class ModelUsuario extends Model implements PerfisInterface, PermitidoInterface, PersistenciasInterface, UsuarioInterface
 {
     use PermitidoTrait;
 

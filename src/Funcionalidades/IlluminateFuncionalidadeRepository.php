@@ -60,12 +60,12 @@ class IlluminateFuncionalidadeRepository implements FuncionalidadeRepositoryInte
     /**
      * {@inheritDoc}
      */
-    public function findBySlug($slug)
+    public function findByDescricao($descricao)
     {
         return $this
             ->createModel()
             ->newQuery()
-            ->where('slug', $slug)
+            ->where('descricao', $descricao)
             ->first();
     }
 
