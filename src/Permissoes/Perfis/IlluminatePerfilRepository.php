@@ -32,7 +32,7 @@ class IlluminatePerfilRepository implements PerfilRepositoryInterface
      *
      * @var string
      */
-    protected $model = 'Xfusionsolution\Controledeacesso\Funcionalidades\ModelFuncionalidade';
+    protected $model = 'Xfusionsolution\Controledeacesso\Permissoes\Perfis\ModelPerfil';
 
     /**
      * Create a new Illuminate role repository.
