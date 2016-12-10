@@ -20,6 +20,7 @@
 
 namespace Xfusionsolution\Controlededeacesso\Funcionalidades;
 
+use Xfusionsolution\Controledeacesso\Funcionalidades\FuncionalidadeInterface;
 use Xfusionsolution\Controledeacesso\Permissoes\PermitidoInterface;
 use Xfusionsolution\Controledeacesso\Permissoes\PermitidoTrait;
 use Illuminate\Database\Eloquent\Model;
