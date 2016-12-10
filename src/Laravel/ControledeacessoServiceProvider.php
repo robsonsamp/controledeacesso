@@ -400,7 +400,7 @@ class ControledeacessoServiceProvider extends ServiceProvider
             return $controledeacesso;
         });
 
-        $this->app->alias('controledeacesso', 'Xfusionsolution\Controledeacesso\controledeacesso');
+        $this->app->alias('controledeacesso', 'Xfusionsolution\Controledeacesso\Controledeacesso');
     }
 
     /**
