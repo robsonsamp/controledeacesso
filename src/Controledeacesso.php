@@ -176,7 +176,7 @@ class Controledeacesso
      *
      * @param  array  $credentials
      * @param  \Closure|bool  $callback
-     * @return \Xfusionsolution\Controledeacesso\Usuarios\UsuarioInteface|bool
+     * @return \Xfusionsolution\Controledeacesso\Usuarios\UsuarioInterface|bool
      * @throws \InvalidArgumentException
      */
     public function register(array $credentials, $callback = null)
@@ -210,7 +210,7 @@ class Controledeacesso
      * Registers and activates the usuario.
      *
      * @param  array  $credentials
-     * @return \Xfusionsolution\Controledeacesso\Usuarios\UsuarioInteface|bool
+     * @return \Xfusionsolution\Controledeacesso\Usuarios\UsuarioInterface|bool
      */
     public function registerAndActivate(array $credentials)
     {
