@@ -12,6 +12,8 @@
   ],
   "require": {
     "php": ">=5.4.0"
+    "xfusionsolution/suporte": "~0.1",
+    "illuminate/support": "~5.0"
   },
   "require-dev": {
     "illuminate/cookie": "~5.0",
@@ -23,6 +25,12 @@
     "paragonie/random_compat": "^1.4|^2",
     "phpunit/phpunit": "~4.0"
   },
+  "suggest": {
+    "illuminate/database": "By default, Sentinel utilizes the powerful Illuminate database layer.",
+    "illuminate/events": "To hook into various events across Sentinel, we recommend using Illuminate's event dispatcher.",
+    "ircmaxell/password-compat": "Default hashing uses PHP 5.5 password_* functions, with forward-compatible support.",
+    "symfony/http-foundation": "Required for native implementations."
+  },
   "autoload": {
     "psr-4": {
       "XfusionSolution\\Controledeacesso\\": "src/"
@@ -31,7 +39,7 @@
   "extra": {
     "component": "package",
     "branch-alias": {
-      "dev-master": "0.0.6.x-dev"
+      "dev-master": "0.0.7.x-dev"
     }
   },
 
