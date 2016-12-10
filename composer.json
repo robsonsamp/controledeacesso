@@ -33,7 +33,7 @@
   },
   "autoload": {
     "psr-4": {
-      "XfusionSolution\\Controledeacesso\\": "src/Laravel"
+      "XfusionSolution\\Controledeacesso\\": "src/"
     }
   },
   "extra": {
