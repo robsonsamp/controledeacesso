@@ -18,11 +18,11 @@
  * @link       http://xfusionsolution.com.br
  */
 
-namespace Xfusionsolution\Contfuncionalidadedeacesso\Funcionalidades;
+namespace Xfusionsolution\Controlededeacesso\Funcionalidades;
 
-use Xfusionsolution\Contfuncionalidadedeacesso\Permissoes\PermissaoInterface;
-use Xfusionsolution\Contfuncionalidadedeacesso\Permissoes\PermitidoTrait;
-use Xfusionsolution\Contfuncionalidadedeacesso\Permissoes\Perfis\PerfisInterface;
+use Xfusionsolution\Controlededeacesso\Permissoes\PermissaoInterface;
+use Xfusionsolution\Controlededeacesso\Permissoes\PermitidoTrait;
+use Xfusionsolution\Controlededeacesso\Funcionalidades\FuncionalidadesInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class ModelFuncionalidade extends Model implements FuncionalidadesInterface, PermissaoInterface
@@ -93,14 +93,14 @@ class ModelFuncionalidade extends Model implements FuncionalidadesInterface, Per
      *
      * @var string
      */
-    protected static $usuariosModel = 'Xfusionsolution\Contfuncionalidadedeacesso\Usuarios\ModelUsuario';
+    protected static $usuariosModel = 'Xfusionsolution\Controlededeacesso\Usuarios\ModelUsuario';
 
     /**
      * The Eloquent funcionalidade model name.
      *
      * @var string
      */
-    protected static $funcionalidadesModel = 'Xfusionsolution\Contfuncionalidadedeacesso\Funcionalidades\ModelFuncionalidade';
+    protected static $funcionalidadesModel = 'Xfusionsolution\Controlededeacesso\Funcionalidades\ModelFuncionalidade';
     /**
      * {@inheritDoc}
      */

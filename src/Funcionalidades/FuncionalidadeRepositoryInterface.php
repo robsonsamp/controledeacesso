@@ -18,7 +18,7 @@
  * @link       http://xfusionsolution.com.br
  */
 
-namespace Xfusionsolution\Contfuncionalidadedeacesso\Funcionalidades;
+namespace Xfusionsolution\Controledeacesso\Funcionalidades;
 
 interface FuncionalidadeRepositoryInterface
 {

@@ -22,7 +22,7 @@ namespace Xfusionsolution\Controledeacesso\Usuarios;
 
 use Closure;
 
-interface UsuariosRepositoryInterface
+interface UsuarioRepositoryInterface
 {
     /**
      * Finds a usuarios by the given primary key.
