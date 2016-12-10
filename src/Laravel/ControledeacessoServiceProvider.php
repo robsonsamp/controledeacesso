@@ -363,7 +363,7 @@ class ControledeacessoServiceProvider extends ServiceProvider
             $controledeacesso = new controledeacesso(
                 $app['controledeacesso.persistencia'],
                 $app['controledeacesso.usuarios'],
-                $app['controledeacesso.perfis'],
+                $app['controledeacesso.permissoes.perfis'],
                 $app['controledeacesso.funcionalidades'],
                 $app['controledeacesso.activations'],
                 $app['events']
@@ -414,7 +414,7 @@ class ControledeacessoServiceProvider extends ServiceProvider
             'controledeacesso.persistencia',
             'controledeacesso.hasher',
             'controledeacesso.usuarios',
-            'controledeacesso.perfis',
+            'controledeacesso.permissoes.perfis',
             'controledeacesso.funcionalidades',
             'controledeacesso.activations',
             'controledeacesso.checkpoint.activation',
