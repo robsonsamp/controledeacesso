@@ -18,26 +18,26 @@
  * @link       http://cartalyst.com
  */
 
-namespace Cartalyst\controledeacesso\Laravel;
+namespace Xfusionsolution\Controledeacesso\Laravel;
 
-use Cartalyst\controledeacesso\Activations\IlluminateActivationRepository;
-use Cartalyst\controledeacesso\Checkpoints\ActivationCheckpoint;
-use Cartalyst\controledeacesso\Checkpoints\ThrottleCheckpoint;
-use Cartalyst\controledeacesso\Cookies\IlluminateCookie;
-use Cartalyst\controledeacesso\Hashing\NativeHasher;
-use Cartalyst\controledeacesso\Persistences\IlluminatePersistenceRepository;
-use Cartalyst\controledeacesso\Reminders\IlluminateReminderRepository;
-use Cartalyst\controledeacesso\Roles\IlluminateRoleRepository;
-use Cartalyst\controledeacesso\controledeacesso;
-use Cartalyst\controledeacesso\Sessions\IlluminateSession;
-use Cartalyst\controledeacesso\Throttling\IlluminateThrottleRepository;
-use Cartalyst\controledeacesso\Users\IlluminateUserRepository;
+use Xfusionsolution\Controledeacesso\Activations\IlluminateActivationRepository;
+use Xfusionsolution\Controledeacesso\Checkpoints\ActivationCheckpoint;
+use Xfusionsolution\Controledeacesso\Checkpoints\ThrottleCheckpoint;
+use Xfusionsolution\Controledeacesso\Cookies\IlluminateCookie;
+use Xfusionsolution\Controledeacesso\Hashing\NativeHasher;
+use Xfusionsolution\Controledeacesso\Persistencias\IlluminatePersistenciaRepository;
+use Xfusionsolution\Controledeacesso\Reminders\IlluminateReminderRepository;
+use Xfusionsolution\Controledeacesso\Perfis\IlluminatePerfilRepository;
+use Xfusionsolution\Controledeacesso\Controledeacesso;
+use Xfusionsolution\Controledeacesso\Sessions\IlluminateSession;
+use Xfusionsolution\Controledeacesso\Throttling\IlluminateThrottleRepository;
+use Xfusionsolution\Controledeacesso\Usuarios\IlluminateUsuarioRepository;
 use Exception;
 use Illuminate\Support\ServiceProvider;
 use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Response;
 
-class ControleDeAcessoServiceProvider extends ServiceProvider
+class ContperfilDeAcessoServiceProvider extends ServiceProvider
 {
     /**
      * {@inheritDoc}
@@ -53,13 +53,14 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
     public function register()
     {
         $this->prepareResources();
-        $this->registerPersistences();
-        $this->registerUsers();
-        $this->registerRoles();
+        $this->registerPersistencias();
+        $this->registerUsuarios();
+        $this->registerPerfis();
+        $this->registerFuncionalidades();
         $this->registerCheckpoints();
         $this->registerReminders();
-        $this->registercontroledeacesso();
-        $this->setUserResolver();
+        $this->registerControledeacesso();
+        $this->setUsuarioResolver();
     }
 
     /**
@@ -87,27 +88,27 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
     }
 
     /**
-     * Registers the persistences.
+     * Registers the persistencias.
      *
      * @return void
      */
-    protected function registerPersistences()
+    protected function registerPersistencias()
     {
         $this->registerSession();
         $this->registerCookie();
 
-        $this->app->singleton('controledeacesso.persistence', function ($app) {
+        $this->app->singleton('controledeacesso.persistencia', function ($app) {
             $config = $app['config']->get('xfusionsolution.controledeacesso');
 
-            $model  = $config['persistences']['model'];
-            $single = $config['persistences']['single'];
-            $users  = $config['users']['model'];
+            $model  = $config['persistencias']['model'];
+            $single = $config['persistencias']['single'];
+            $usuarios  = $config['usuarios']['model'];
 
-            if (class_exists($users) && method_exists($users, 'setPersistencesModel')) {
-                forward_static_call_array([$users, 'setPersistencesModel'], [$model]);
+            if (class_exists($usuarios) && method_exists($usuarios, 'setPersistenciasModel')) {
+                forward_static_call_array([$usuarios, 'setPersistenciasModel'], [$model]);
             }
 
-            return new IlluminatePersistenceRepository($app['controledeacesso.session'], $app['controledeacesso.cookie'], $model, $single);
+            return new IlluminatePersistenciaRepository($app['controledeacesso.session'], $app['controledeacesso.cookie'], $model, $single);
         });
     }
 
@@ -140,35 +141,40 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
     }
 
     /**
-     * Registers the users.
+     * Registers the usuarios.
      *
      * @return void
      */
-    protected function registerUsers()
+    protected function registerUsuarios()
     {
         $this->registerHasher();
 
-        $this->app->singleton('controledeacesso.users', function ($app) {
+        $this->app->singleton('controledeacesso.usuarios', function ($app) {
             $config = $app['config']->get('xfusionsolution.controledeacesso');
 
-            $users        = $config['users']['model'];
-            $roles        = $config['roles']['model'];
-            $persistences = $config['persistences']['model'];
+            $usuarios        = $config['usuarios']['model'];
+            $perfis        = $config['perfis']['model'];
+            $funcionalidades = $config['funcionalidades']['model'];
+            $persistencias = $config['persistencias']['model'];
             $permissions  = $config['permissions']['class'];
 
-            if (class_exists($roles) && method_exists($roles, 'setUsersModel')) {
-                forward_static_call_array([$roles, 'setUsersModel'], [$users]);
+            if (class_exists($perfis) && method_exists($perfis, 'setUsuariosModel')) {
+                forward_static_call_array([$perfis, 'setUsuariosModel'], [$usuarios]);
             }
 
-            if (class_exists($persistences) && method_exists($persistences, 'setUsersModel')) {
-                forward_static_call_array([$persistences, 'setUsersModel'], [$users]);
+            if (class_exists($funcionalidades) && method_exists($funcionalidades, 'setUsuariosModel')) {
+                forward_static_call_array([$funcionalidades, 'setUsuariosModel'], [$usuarios]);
             }
 
-            if (class_exists($users) && method_exists($users, 'setPermissionsClass')) {
-                forward_static_call_array([$users, 'setPermissionsClass'], [$permissions]);
+            if (class_exists($persistencias) && method_exists($persistencias, 'setUsuariosModel')) {
+                forward_static_call_array([$persistencias, 'setUsuariosModel'], [$usuarios]);
             }
-            
-            return new IlluminateUserRepository($app['controledeacesso.hasher'], $app['events'], $users);
+
+            if (class_exists($usuarios) && method_exists($usuarios, 'setPermissionsClass')) {
+                forward_static_call_array([$usuarios, 'setPermissionsClass'], [$permissions]);
+            }
+
+            return new IlluminateUsuarioRepository($app['controledeacesso.hasher'], $app['events'], $usuarios);
         });
     }
 
@@ -185,23 +191,44 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
     }
 
     /**
-     * Registers the roles.
+     * Registers the perfis.
      *
      * @return void
      */
-    protected function registerRoles()
+    protected function registerPerfis()
     {
-        $this->app->singleton('controledeacesso.roles', function ($app) {
+        $this->app->singleton('controledeacesso.perfis', function ($app) {
             $config = $app['config']->get('xfusionsolution.controledeacesso');
 
-            $model = $config['roles']['model'];
-            $users = $config['users']['model'];
+            $model = $config['perfis']['model'];
+            $usuarios = $config['usuarios']['model'];
 
-            if (class_exists($users) && method_exists($users, 'setRolesModel')) {
-                forward_static_call_array([$users, 'setRolesModel'], [$model]);
+            if (class_exists($usuarios) && method_exists($usuarios, 'setPerfisModel')) {
+                forward_static_call_array([$usuarios, 'setPerfisModel'], [$model]);
             }
 
-            return new IlluminateRoleRepository($model);
+            return new IlluminatePerfilRepository($model);
+        });
+    }
+
+    /**
+     * Registers the funcionalidades.
+     *
+     * @return void
+     */
+    protected function registerFuncionalidades()
+    {
+        $this->app->singleton('controledeacesso.funcionalidades', function ($app) {
+            $config = $app['config']->get('xfusionsolution.controledeacesso');
+
+            $model = $config['funcionalidades']['model'];
+            $usuarios = $config['usuarios']['model'];
+
+            if (class_exists($usuarios) && method_exists($usuarios, 'setFuncionalidadesModel')) {
+                forward_static_call_array([$usuarios, 'setFuncionalidadesModel'], [$model]);
+            }
+
+            return new IlluminatePerfilRepository($model);
         });
     }
 
@@ -291,7 +318,7 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
         $this->app->singleton('controledeacesso.throttling', function ($app) {
             $model = $app['config']->get('xfusionsolution.controledeacesso.throttling.model');
 
-            foreach (['global', 'ip', 'user'] as $type) {
+            foreach (['global', 'ip', 'usuario'] as $type) {
                 ${"{$type}Interval"} = $app['config']->get("xfusionsolution.controledeacesso.throttling.{$type}.interval");
                 ${"{$type}Thresholds"} = $app['config']->get("xfusionsolution.controledeacesso.throttling.{$type}.thresholds");
             }
@@ -302,8 +329,8 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
                 $globalThresholds,
                 $ipInterval,
                 $ipThresholds,
-                $userInterval,
-                $userThresholds
+                $usuarioInterval,
+                $usuarioThresholds
             );
         });
     }
@@ -321,7 +348,7 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
             $model   = $config['reminders']['model'];
             $expires = $config['reminders']['expires'];
 
-            return new IlluminateReminderRepository($app['controledeacesso.users'], $model, $expires);
+            return new IlluminateReminderRepository($app['controledeacesso.usuarios'], $model, $expires);
         });
     }
 
@@ -330,13 +357,14 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registercontroledeacesso()
+    protected function registerControledeacesso()
     {
         $this->app->singleton('controledeacesso', function ($app) {
             $controledeacesso = new controledeacesso(
-                $app['controledeacesso.persistence'],
-                $app['controledeacesso.users'],
-                $app['controledeacesso.roles'],
+                $app['controledeacesso.persistencia'],
+                $app['controledeacesso.usuarios'],
+                $app['controledeacesso.perfis'],
+                $app['controledeacesso.funcionalidades'],
                 $app['controledeacesso.activations'],
                 $app['events']
             );
@@ -353,7 +381,7 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
             $controledeacesso->setRequestCredentials(function () use ($app) {
                 $request = $app['request'];
 
-                $login = $request->getUser();
+                $login = $request->getUsuario();
                 $password = $request->getPassword();
 
                 if ($login === null && $password === null) {
@@ -372,7 +400,7 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
             return $controledeacesso;
         });
 
-        $this->app->alias('controledeacesso', 'Cartalyst\controledeacesso\controledeacesso');
+        $this->app->alias('controledeacesso', 'Xfusionsolution\Controledeacesso\controledeacesso');
     }
 
     /**
@@ -383,10 +411,11 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
         return [
             'controledeacesso.session',
             'controledeacesso.cookie',
-            'controledeacesso.persistence',
+            'controledeacesso.persistencia',
             'controledeacesso.hasher',
-            'controledeacesso.users',
-            'controledeacesso.roles',
+            'controledeacesso.usuarios',
+            'controledeacesso.perfis',
+            'controledeacesso.funcionalidades',
             'controledeacesso.activations',
             'controledeacesso.checkpoint.activation',
             'controledeacesso.throttling',
@@ -442,15 +471,15 @@ class ControleDeAcessoServiceProvider extends ServiceProvider
     }
 
     /**
-     * Sets the user resolver on the request class.
+     * Sets the usuario resolver on the request class.
      *
      * @return void
      */
-    protected function setUserResolver()
+    protected function setUsuarioResolver()
     {
         $this->app->rebinding('request', function ($app, $request) {
-            $request->setUserResolver(function () use ($app) {
-                return $app['controledeacesso']->getUser();
+            $request->setUsuarioResolver(function () use ($app) {
+                return $app['controledeacesso']->getUsuario();
             });
         });
     }
