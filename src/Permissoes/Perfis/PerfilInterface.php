@@ -18,7 +18,7 @@
  * @link       http://xfusionsolution.com.br
  */
 
-namespace Xfusionsolution\Contperfildeacesso\Permissoes\Perfis;
+namespace Xfusionsolution\Controledeacesso\Permissoes\Perfis;
 
 interface PerfilInterface
 {

@@ -18,14 +18,13 @@
  * @link       http://xfusionsolution.com.br
  */
 
-namespace Xfusionsolution\Contperfildeacesso\Permissoes\Perfis;
+namespace Xfusionsolution\Controledeacesso\Permissoes\Perfis;
 
-use Xfusionsolution\Contperfildeacesso\Permissoes\PermissaoInterface;
-use Xfusionsolution\Contperfildeacesso\Permissoes\PermitidoTrait;
-use Xfusionsolution\Contperfildeacesso\Permissoes\Perfis\PerfisInterface;
+use Xfusionsolution\Controledeacesso\Permissoes\PermitidoInterface;
+use Xfusionsolution\Controledeacesso\Permissoes\PermitidoTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class ModelPerfil extends Model implements PerfisInterface, PermissaoInterface
+class ModelPerfil extends Model implements PerfisInterfaceInterface, PermitidoInterface
 {
     use PermitidoTrait;
 
@@ -55,7 +54,7 @@ class ModelPerfil extends Model implements PerfisInterface, PermissaoInterface
      *
      * @var string
      */
-    protected static $usuariosModel = 'Xfusionsolution\Contperfildeacesso\Usuarios\ModelUsuario';
+    protected static $usuariosModel = 'Xfusionsolution\Controledeacesso\Usuarios\ModelUsuario';
 
     /**
      * {@inheritDoc}

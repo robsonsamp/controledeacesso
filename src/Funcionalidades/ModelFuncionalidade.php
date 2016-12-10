@@ -22,10 +22,9 @@ namespace Xfusionsolution\Controlededeacesso\Funcionalidades;
 
 use Xfusionsolution\Controledeacesso\Permissoes\PermitidoInterface;
 use Xfusionsolution\Controledeacesso\Permissoes\PermitidoTrait;
-use Xfusionsolution\Controledeacesso\Funcionalidades\FuncionalidadesInterface;
 use Illuminate\Database\Eloquent\Model;
 
-class ModelFuncionalidade extends Model implements FuncionalidadesInterface, PermitidoInterface
+class ModelFuncionalidade extends Model implements FuncionalidadeInterface, PermitidoInterface
 {
     use PermitidoTrait;
 

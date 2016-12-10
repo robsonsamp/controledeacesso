@@ -22,7 +22,6 @@ namespace Xfusionsolution\Controledeacesso\Usuarios;
 
 use Xfusionsolution\Controledeacesso\Permissoes\PermitidoInterface;
 use Xfusionsolution\Controledeacesso\Persistencias\PersistenciasInterface;
-use Xfusionsolution\Controledeacesso\Permissoes\PermissoesInterface;
 use Xfusionsolution\Controledeacesso\Permissoes\Perfis\PerfisInterface;
 use Xfusionsolution\Controledeacesso\Permissoes\Perfis\PerfilInterface;
 use Xfusionsolution\Controledeacesso\Permissoes\PermitidoTrait;

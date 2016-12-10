@@ -1,6 +1,6 @@
 <?php
 
-namespace Controledeacesso\Permissoes\Perfis;
+namespace Xfusionsolution\Controledeacesso\Permissoes\Perfis;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
