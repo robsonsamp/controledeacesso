@@ -37,7 +37,7 @@ use Illuminate\Support\ServiceProvider;
 use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Response;
 
-class ContperfilDeAcessoServiceProvider extends ServiceProvider
+class ControleDeAcessoServiceProvider extends ServiceProvider
 {
     /**
      * {@inheritDoc}
